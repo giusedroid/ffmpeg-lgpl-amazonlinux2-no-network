@@ -67,6 +67,7 @@ RUN \
         --disable-debug \
         --disable-doc \
         --disable-ffplay \
+        --disable-network \
         --bindir="${PREFIX}/bin" && \
         make && \
         make install

@@ -1,5 +1,5 @@
-# ffmpeg-lgpl-amazonlinux2
-<!--![build status](https://travis-ci.com/giusedroid/ffmpeg-lgpl-ubuntu.svg?branch=master)--> 
+# ffmpeg-lgpl-amazonlinux2-no-network
+<!--![build status](https://travis-ci.com/giusedroid/ffmpeg-lgpl-ubuntu.svg?branch=main)--> 
 FFmpeg Docker container compiled to be compatible with LGPL starting from AmazonLinux2.  
 FFmpeg has been compiled as a single static binary to use it with AWS Lambda Layers.
 
@@ -18,7 +18,7 @@ FFmpeg has been compiled with the following configuration.
 ```
 ffmpeg version 4.2.2 Copyright (c) 2000-2019 the FFmpeg developers
   built with gcc 7 (GCC)
-  configuration: --prefix=/home/ec2-user/ffmpeg_build --pkg-config-flags=--static --extra-cflags='-I/home/ec2-user/ffmpeg_build/include -static' --extra-ldflags='-L/home/ec2-user/ffmpeg_build/lib -static' --disable-debug --disable-doc --disable-ffplay --bindir=/home/ec2-user/bin
+  configuration: --prefix=/opt/ffmpeg_build --pkg-config-flags=--static --extra-cflags='-I/opt/ffmpeg_build/include -static' --extra-ldflags='-L/opt/ffmpeg_build/lib -static' --disable-debug --disable-doc --disable-ffplay --disable-network --bindir=/opt/bin
   libavutil      56. 31.100 / 56. 31.100
   libavcodec     58. 54.100 / 58. 54.100
   libavformat    58. 29.100 / 58. 29.100
@@ -26,8 +26,11 @@ ffmpeg version 4.2.2 Copyright (c) 2000-2019 the FFmpeg developers
   libavfilter     7. 57.100 /  7. 57.100
   libswscale      5.  5.100 /  5.  5.100
   libswresample   3.  5.100 /  3.  5.100
+Hyper fast Audio and Video encoder
+usage: ffmpeg [options] [[infile options] -i infile]... {[outfile options] outfile}...
 ```
 FFmpeg has been compiled **without** `--enable-gpl` and `--enable-nonfree` in order to comply with the terms of [LGPLv2.1](/ffmpeg/LICENSE).  
+Additionally, this release has been compiled witn `--disable-network` for advanced security requirements.  
 You can have further details on the compilation process in the [Dockerfile](/Dockerfile) and in the [local build script](/build.sh) 
 
 You can check that the `ffmpeg` single binary has no dynamic dependencies by
@@ -46,7 +49,7 @@ You can find an achive with both FFmpeg and FFprobe static binaries for AmazonLi
 ## Docker
 You can pull this image from DockerHub by doing the following
 ```
-docker pull giusedroid/ffmpeg-lgpl:amazonlinux2
+docker pull giusedroid/ffmpeg-lgpl:amazonlinux2-no-network
 ```
 
 ## Buy Me a Beer

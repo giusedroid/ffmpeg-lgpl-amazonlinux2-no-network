@@ -66,6 +66,7 @@ PKG_CONFIG_PATH="$PREFIX/ffmpeg_build/lib/pkgconfig"
     --disable-debug \
     --disable-doc \
     --disable-ffplay \
+    --disable-network \
     --bindir="$PREFIX/bin"
 
 make

@@ -8,6 +8,6 @@ language: generic
 script:
   - if [ "$TRAVIS_BRANCH" == "main" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker build . -t giusedroid/ffmpeg-lgpl:amazonlinux2;
-    docker push giusedroid/ffmpeg-lgpl:amazonlinux2;
+    docker build . -t giusedroid/ffmpeg-lgpl:amazonlinux2-no-network;
+    docker push giusedroid/ffmpeg-lgpl:amazonlinux2-no-network;
     fi
